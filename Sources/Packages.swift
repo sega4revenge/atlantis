@@ -170,7 +170,7 @@ public final class TrafficPackage: Codable, CustomDebugStringConvertible, Serial
             return
         }
         lastData = data
-        guard responseBodyData.count < 52428800 else {
+        guard responseBodyData.count < 2428800 else {
         endAt = Date().timeIntervalSince1970
         return
         }
