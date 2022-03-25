@@ -143,7 +143,7 @@ public final class TrafficPackage: Codable, CustomDebugStringConvertible, Serial
         // Construct the Response without body
         self.response = Response(response)
     }
-    
+
     func updateDidComplete(_ error: Error?) {
         endAt = Date().timeIntervalSince1970
         if let error = error {
@@ -170,6 +170,10 @@ public final class TrafficPackage: Codable, CustomDebugStringConvertible, Serial
             return
         }
         lastData = data
+        guard responseBodyData.count < 52428800 else {
+        endAt = Date().timeIntervalSince1970
+        return
+        }
         responseBodyData.append(data)
     }
 
